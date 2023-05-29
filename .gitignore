@@ -167,6 +167,11 @@ cython_debug/
 #VS Code
 .vscode
 
+#Schema
+schema.yml
+htmlcov
+.DS_store
+.coverage
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
