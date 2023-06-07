@@ -8,7 +8,7 @@ from drfecommerce.product import views
 router = routers.DefaultRouter()
 router.register(r"category", views.CategoryViewSet)
 router.register(r"brand", views.BrandViewSet)
-router.register(r"product", views.ProuctViewSet)
+router.register(r"product", views.ProductViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),

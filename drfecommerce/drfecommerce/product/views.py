@@ -52,7 +52,7 @@ class BrandViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
-class ProuctViewSet(viewsets.ViewSet):
+class ProductViewSet(viewsets.ViewSet):
 
     """
     A simple Viewset for viewing all brands
@@ -70,12 +70,15 @@ class ProuctViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(
             self.queryset.filter(slug=slug)
             .select_related("category", "brand")
-            .prefetch_related(Prefetch("product_line__product_image")),
+            .prefetch_related(
+                Prefetch("product_line__product_image"),
+                Prefetch("product_line__attribute_value__attribute"),
+            ),
             many=True,
         )
         data = Response(serializer.data)
-        q = list(connection.queries)
-        print(len(q))
+        # q = list(connection.queries)
+        # print(len(q))
         # for qs in q:
         #     sqlformatted = format(str(qs["sql"]), reindent=True)
         #     print(highlight(sqlformatted, SqlLexer(), TerminalFormatter()))
