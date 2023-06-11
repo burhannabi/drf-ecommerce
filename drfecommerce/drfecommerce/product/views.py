@@ -34,7 +34,6 @@ class CategoryViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
-
 class ProductViewSet(viewsets.ViewSet):
 
     """
