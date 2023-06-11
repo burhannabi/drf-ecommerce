@@ -3,7 +3,6 @@ from rest_framework import serializers
 from .models import (
     Attribute,
     AttributeValue,
-    Brand,
     Category,
     Product,
     ProductImage,
@@ -19,10 +18,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ["category_name"]
 
 
-class BrandSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Brand
-        exclude = ("id",)
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -71,7 +66,6 @@ class ProductLineSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    brand_name = serializers.CharField(source="brand.name")
     category_name = serializers.CharField(source="category.name")
     product_line = ProductLineSerializer(many=True)
     attribute = serializers.SerializerMethodField()
@@ -82,7 +76,6 @@ class ProductSerializer(serializers.ModelSerializer):
             "name",
             "slug",
             "description",
-            "brand_name",
             "category_name",
             "product_line",
             "attribute",
